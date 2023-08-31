@@ -97,9 +97,6 @@ button[type='submit'] {
 .book.read {
   border-left-color: green;
 }
-.book.unread {
-  border-left-color: red;
-}
 
 .title {
   font-weight: bold;
