@@ -9,6 +9,7 @@ formEl.addEventListener('submit', (e) => {
     +e.target.elements.pages.value,
     e.target.isRead.checked
   )
+  e.target.reset()
 })
 
 const myLibrary = []
