@@ -12,6 +12,9 @@ formEl.addEventListener('submit', (e) => {
 })
 
 const myLibrary = []
+const toggleRead = (e) => {
+  e.currentTarget.classList.toggle('read')
+}
 
 function Book(title, author, pages, isRead) {
   this.title = title
@@ -51,4 +54,12 @@ function addBookToLibrary(title, author, pages, isRead) {
 
   myLibrary.push(new Book(title, author, pages, isRead))
   console.table(myLibrary)
+
+  book.addEventListener('click', toggleRead, false)
 }
+
+const allBookEls = document.querySelectorAll('.book')
+
+Array.from(allBookEls).forEach((book) =>
+  book.addEventListener('click', toggleRead)
+)
