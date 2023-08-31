@@ -1,6 +1,24 @@
-/* Write a constructor for making “Book” objects. Your book objects should have the book’s title, author, the number of pages, and whether or not you have read the book. 
+const formEl = document.querySelector('form')
 
-Put a function into the constructor that can report the book info like so: theHobbit.info() // "The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"*/
+formEl.addEventListener('submit', (e) => {
+  e.preventDefault()
+  addBookToLibrary(
+    e.target.elements.title.value,
+    e.target.elements.author.value,
+    +e.target.elements.pages.value,
+    e.target.isRead.checked
+  )
+})
+
+const myLibrary = [
+  { title: 'The Hobbit', author: 'J.R.R. Tolkien', pages: 295, isRead: false },
+  {
+    title: `Man's Search For Meaning`,
+    author: 'Viktor E. Frankl',
+    pages: 154,
+    isRead: true,
+  },
+]
 
 function Book(title, author, pages, isRead) {
   this.title = title
@@ -14,5 +32,8 @@ function Book(title, author, pages, isRead) {
   }
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false)
-console.log(theHobbit.info())
+function addBookToLibrary(title, author, pages, isRead) {
+  if ((!title, !author, !pages)) return
+
+  myLibrary.push({ title, author, pages, isRead })
+}
