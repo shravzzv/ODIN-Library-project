@@ -1,16 +1,6 @@
 const formEl = document.querySelector('form')
 const libraryEl = document.querySelector('.library')
-
-formEl.addEventListener('submit', (e) => {
-  e.preventDefault()
-  addBookToLibrary(
-    e.target.elements.title.value,
-    e.target.elements.author.value,
-    +e.target.elements.pages.value,
-    e.target.isRead.checked
-  )
-  e.target.reset()
-})
+const allBookEls = document.querySelectorAll('.book')
 
 const myLibrary = []
 const toggleRead = (e) => {
@@ -29,10 +19,7 @@ function Book(title, author, pages, isRead) {
   }
 }
 
-function addBookToLibrary(title, author, pages, isRead) {
-  if ((!title, !author, !pages))
-    return alert('Please enter the required fields') // server-side form validation
-
+const createBook = (title, author, pages, isRead) => {
   const book = document.createElement('div')
   const bookTitle = document.createElement('p')
   const bookAuthor = document.createElement('p')
@@ -53,14 +40,29 @@ function addBookToLibrary(title, author, pages, isRead) {
   book.appendChild(bookPages)
   libraryEl.appendChild(book)
 
-  myLibrary.push(new Book(title, author, pages, isRead))
-  console.table(myLibrary)
-
   book.addEventListener('click', toggleRead, false)
 }
 
-const allBookEls = document.querySelectorAll('.book')
+formEl.addEventListener('submit', (e) => {
+  e.preventDefault()
+  addBookToLibrary(
+    e.target.elements.title.value,
+    e.target.elements.author.value,
+    +e.target.elements.pages.value,
+    e.target.isRead.checked
+  )
+  e.target.reset()
+})
 
 Array.from(allBookEls).forEach((book) =>
   book.addEventListener('click', toggleRead)
 )
+
+function addBookToLibrary(title, author, pages, isRead) {
+  if ((!title, !author, !pages))
+    return alert('Please enter the required fields') // server-side form validation
+
+  myLibrary.push(new Book(title, author, pages, isRead))
+  createBook(title, author, pages, isRead)
+  console.table(myLibrary)
+}
