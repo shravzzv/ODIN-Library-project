@@ -1,4 +1,5 @@
 const formEl = document.querySelector('form')
+const libraryEl = document.querySelector('.library')
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -26,7 +27,28 @@ function Book(title, author, pages, isRead) {
 
 function addBookToLibrary(title, author, pages, isRead) {
   if ((!title, !author, !pages))
-    return alert('Please enter the required fields')
+    return alert('Please enter the required fields') // server-side form validation
+
+  const book = document.createElement('div')
+  const bookTitle = document.createElement('p')
+  const bookAuthor = document.createElement('p')
+  const bookPages = document.createElement('p')
+
+  book.classList.add('book')
+  bookTitle.classList.add('title')
+  bookAuthor.classList.add('author')
+  bookPages.classList.add('pages')
+  isRead && book.classList.add('read')
+
+  bookTitle.textContent = title
+  bookAuthor.textContent = author
+  bookPages.textContent = pages
+
+  book.appendChild(bookTitle)
+  book.appendChild(bookAuthor)
+  book.appendChild(bookPages)
+  libraryEl.appendChild(book)
 
   myLibrary.push(new Book(title, author, pages, isRead))
+  console.table(myLibrary)
 }
