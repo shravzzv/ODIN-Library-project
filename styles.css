@@ -80,6 +80,39 @@ button[type='submit'] {
   border-radius: 1em;
 }
 
+.library {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1em;
+}
+
+.book {
+  border-radius: 0.5em;
+  border-left: 5px solid black;
+  padding: 0.5em;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.book.read {
+  border-left-color: green;
+}
+.book.unread {
+  border-left-color: red;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.author {
+  opacity: 0.7;
+}
+
+.pages::before {
+  content: '📄 ';
+}
+
 @media screen and (min-width: 768px) {
   fieldset {
     width: max-content;
