@@ -10,15 +10,7 @@ formEl.addEventListener('submit', (e) => {
   )
 })
 
-const myLibrary = [
-  { title: 'The Hobbit', author: 'J.R.R. Tolkien', pages: 295, isRead: false },
-  {
-    title: `Man's Search For Meaning`,
-    author: 'Viktor E. Frankl',
-    pages: 154,
-    isRead: true,
-  },
-]
+const myLibrary = []
 
 function Book(title, author, pages, isRead) {
   this.title = title
@@ -33,7 +25,8 @@ function Book(title, author, pages, isRead) {
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
-  if ((!title, !author, !pages)) return
+  if ((!title, !author, !pages))
+    return alert('Please enter the required fields')
 
-  myLibrary.push({ title, author, pages, isRead })
+  myLibrary.push(new Book(title, author, pages, isRead))
 }
