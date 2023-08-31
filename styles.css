@@ -8,6 +8,8 @@
   --input-bdr-clr-def: lightgray;
   --input-bdr-clr-foc: #0969da;
   --input-bg-clr: white;
+  --sbmt-btn-clr: white;
+  --smbt-btn-bg-clr: #0969da;
 }
 
 body {
@@ -80,6 +82,8 @@ button[type='submit'] {
   border: none;
   padding: 0.5em 1em;
   border-radius: 1em;
+  color: var(--sbmt-btn-clr);
+  background-color: var(--smbt-btn-bg-clr);
 }
 
 .library {
@@ -124,5 +128,6 @@ button[type='submit'] {
     --bg-clr: #181a1b;
     --input-bg-clr: #242729;
     --input-bdr-clr-def: #242729;
+    --sbmt-btn-clr: black;
   }
 }
