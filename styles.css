@@ -7,7 +7,7 @@
   --bg-clr: white;
   --input-bdr-clr-def: lightgray;
   --input-bdr-clr-foc: #0969da;
-  --sbmt-btn-bg-clr: #0969da;
+  --input-bg-clr: white;
 }
 
 body {
@@ -61,6 +61,8 @@ input {
   outline: none;
   margin-right: auto;
   width: min(100%, 300px);
+  background-color: var(--input-bg-clr);
+  color: var(--txt-clr);
 }
 
 input[type='checkbox'] {
@@ -120,5 +122,7 @@ button[type='submit'] {
   :root {
     --txt-clr: white;
     --bg-clr: #181a1b;
+    --input-bg-clr: #242729;
+    --input-bdr-clr-def: #242729;
   }
 }
