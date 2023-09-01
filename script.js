@@ -46,14 +46,14 @@ const createBookEl = (book) => {
 formEl.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  myLibrary.push(
-    new Book(
-      e.target.elements.title.value,
-      e.target.elements.author.value,
-      parseInt(e.target.elements.pages.value),
-      e.target.elements.isRead.checked
-    )
-  )
+  const title = e.target.elements.title.value
+  const author = e.target.elements.author.value
+  const pages = parseInt(e.target.elements.pages.value)
+  const isRead = e.target.elements.isRead.checked
+
+  const newBook = new Book(title, author, pages, isRead)
+  myLibrary.push(newBook)
+
   e.target.reset()
   updateLibrary()
 })
