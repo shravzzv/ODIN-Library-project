@@ -50,7 +50,7 @@ formEl.addEventListener('submit', (e) => {
     new Book(
       e.target.elements.title.value,
       e.target.elements.author.value,
-      +e.target.elements.pages.value,
+      parseInt(e.target.elements.pages.value),
       e.target.elements.isRead.checked
     )
   )
