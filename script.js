@@ -9,12 +9,12 @@ function Book(title, author, pages, isRead) {
   this.author = author
   this.pages = pages
   this.isRead = isRead
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${
-      isRead ? 'reading completed' : 'not read yet'
-    }.`
-  }
-  //
+}
+
+Book.prototype.info = function () {
+  return `${title} by ${author}, ${pages} pages, ${
+    isRead ? 'reading completed' : 'not read yet'
+  }.`
 }
 
 const toggleRead = (e) => e.currentTarget.classList.toggle('read')
