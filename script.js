@@ -17,6 +17,7 @@ function Book(title, author, pages, isRead) {
       isRead ? 'reading completed' : 'not read yet'
     }.`
   }
+  //
 }
 
 const createBook = (title, author, pages, isRead) => {
