@@ -19,28 +19,43 @@ Book.prototype.info = function () {
 
 const toggleRead = (e) => e.currentTarget.classList.toggle('read')
 
+const removeBook = (e, index) => {
+  e.stopPropagation()
+  myLibrary.splice(index, 1)
+  showLibrary()
+}
+
 const createBookEl = (book) => {
   const bkEl = document.createElement('div')
   const bkTitleEl = document.createElement('p')
   const bkAuthorEl = document.createElement('p')
   const bkPagesEl = document.createElement('p')
+  const delBtn = document.createElement('div')
 
   bkEl.classList.add('book')
   bkTitleEl.classList.add('title')
   bkAuthorEl.classList.add('author')
   bkPagesEl.classList.add('pages')
   book.isRead && bkEl.classList.add('read')
+  delBtn.classList.add('delete')
 
   bkTitleEl.textContent = book.title
   bkAuthorEl.textContent = book.author
   bkPagesEl.textContent = book.pages
+  delBtn.textContent = '❌'
+
+  bkEl.setAttribute('data-index', myLibrary.length - 1)
 
   bkEl.appendChild(bkTitleEl)
   bkEl.appendChild(bkAuthorEl)
   bkEl.appendChild(bkPagesEl)
+  bkEl.appendChild(delBtn)
   libraryEl.appendChild(bkEl)
 
   bkEl.addEventListener('click', toggleRead)
+  delBtn.addEventListener('click', (e) =>
+    removeBook(e, parseInt(bkEl.getAttribute('data-index')))
+  )
 }
 
 formEl.addEventListener('submit', (e) => {
@@ -69,6 +84,10 @@ const updateLibrary = () => {
   createBookEl(latestBook)
 }
 
-;(function showLibrary() {
+function showLibrary() {
+  // Clear the library container first
+  libraryEl.innerHTML = ''
+  // Re-create book elements for the entire library
   myLibrary.forEach((book) => createBookEl(book))
-})()
+}
+showLibrary()
