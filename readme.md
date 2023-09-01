@@ -8,10 +8,12 @@ This project demonstrates my skills in implementing the **Objects and Object Con
 
 ## Features
 
-- **Add Books to Library**: Easily add books to your library, featuring an efficient layout design using Grid and Flexbox.
-- **Mark Books as Read**: Toggle between read and unread status by simply clicking on a book.
-- **Remove Books from Library**: Enjoy the flexibility of removing books from your collection.
-- **Responsive Design**: The dashboard gracefully adapts to various screen sizes for a seamless user experience.
+- **Add Books**: Effortlessly expand your library with user-friendly forms.
+- **Toggle Read Status**: Quickly mark books as read or unread with a click.
+- **Remove Books**: Effortlessly manage your collection by removing books at will.
+- **Client-side Form Validation**: Ensure data accuracy during book addition with built-in form validation.
+- **Responsive Design**: Seamlessly adapts to various screen sizes for a seamless user experience.
+
 
 ## Installation
 
