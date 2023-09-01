@@ -2,10 +2,7 @@ const formEl = document.querySelector('form')
 const libraryEl = document.querySelector('.library')
 const allBookEls = document.querySelectorAll('.book')
 
-const myLibrary = []
-const toggleRead = (e) => {
-  e.currentTarget.classList.toggle('read')
-}
+const myLibrary = [new Book('The Hobbit', 'J.R.R. Tolkien', 293, false)]
 
 function Book(title, author, pages, isRead) {
   this.title = title
@@ -20,50 +17,58 @@ function Book(title, author, pages, isRead) {
   //
 }
 
-const createBook = (title, author, pages, isRead) => {
-  const book = document.createElement('div')
-  const bookTitle = document.createElement('p')
-  const bookAuthor = document.createElement('p')
-  const bookPages = document.createElement('p')
+const toggleRead = (e) => e.currentTarget.classList.toggle('read')
 
-  book.classList.add('book')
-  bookTitle.classList.add('title')
-  bookAuthor.classList.add('author')
-  bookPages.classList.add('pages')
-  isRead && book.classList.add('read')
+const createBookEl = (book) => {
+  const bkEl = document.createElement('div')
+  const bkTitleEl = document.createElement('p')
+  const bkAuthorEl = document.createElement('p')
+  const bkPagesEl = document.createElement('p')
 
-  bookTitle.textContent = title
-  bookAuthor.textContent = author
-  bookPages.textContent = pages
+  bkEl.classList.add('book')
+  bkTitleEl.classList.add('title')
+  bkAuthorEl.classList.add('author')
+  bkPagesEl.classList.add('pages')
+  book.isRead && bkEl.classList.add('read')
 
-  book.appendChild(bookTitle)
-  book.appendChild(bookAuthor)
-  book.appendChild(bookPages)
-  libraryEl.appendChild(book)
+  bkTitleEl.textContent = book.title
+  bkAuthorEl.textContent = book.author
+  bkPagesEl.textContent = book.pages
 
-  book.addEventListener('click', toggleRead, false)
+  bkEl.appendChild(bkTitleEl)
+  bkEl.appendChild(bkAuthorEl)
+  bkEl.appendChild(bkPagesEl)
+  libraryEl.appendChild(bkEl)
+
+  bkEl.addEventListener('click', toggleRead)
 }
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault()
-  addBookToLibrary(
-    e.target.elements.title.value,
-    e.target.elements.author.value,
-    +e.target.elements.pages.value,
-    e.target.isRead.checked
+
+  myLibrary.push(
+    new Book(
+      e.target.elements.title.value,
+      e.target.elements.author.value,
+      +e.target.elements.pages.value,
+      e.target.elements.isRead.checked
+    )
   )
   e.target.reset()
+  updateLibrary()
 })
 
 Array.from(allBookEls).forEach((book) =>
   book.addEventListener('click', toggleRead)
 )
 
-function addBookToLibrary(title, author, pages, isRead) {
-  if ((!title, !author, !pages))
-    return alert('Please enter the required fields') // server-side form validation
-
-  myLibrary.push(new Book(title, author, pages, isRead))
-  createBook(title, author, pages, isRead)
-  console.table(myLibrary)
+const updateLibrary = () => {
+  // Get the latest book added
+  const latestBook = myLibrary[myLibrary.length - 1]
+  // Create a DOM element for the latest book and append it to the library
+  createBookEl(latestBook)
 }
+
+;(function showLibrary() {
+  myLibrary.forEach((book) => createBookEl(book))
+})()
