@@ -98,6 +98,7 @@ button[type='submit'] {
   padding: 0.5em;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  position: relative;
 }
 
 .book.read {
@@ -114,6 +115,18 @@ button[type='submit'] {
 
 .pages::before {
   content: '📄 ';
+}
+
+.delete {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.delete:hover {
+  background-color: red;
+  border-radius: 1em;
 }
 
 @media screen and (min-width: 768px) {
