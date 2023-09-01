@@ -14,7 +14,6 @@ This project demonstrates my skills in implementing the **Objects and Object Con
 - **Client-side Form Validation**: Ensure data accuracy during book addition with built-in form validation.
 - **Responsive Design**: Seamlessly adapts to various screen sizes for a seamless user experience.
 
-
 ## Installation
 
 To run this project locally, follow these simple steps:
