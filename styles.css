@@ -10,6 +10,7 @@
   --input-bg-clr: white;
   --sbmt-btn-clr: white;
   --smbt-btn-bg-clr: #0969da;
+  --cancel-btn-bg-clr: red;
 }
 
 body {
@@ -88,10 +89,22 @@ button[type='submit'] {
   font-size: 1rem;
   cursor: pointer;
   border: none;
-  padding: 0.5em 1em;
-  border-radius: 1em;
-  color: var(--sbmt-btn-clr);
+  padding: 0.5em 0.25em;
+  border-radius: 1.5em;
+  color: white;
   background-color: var(--smbt-btn-bg-clr);
+  max-width: 40%;
+}
+
+.cancel {
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  padding: 0.5em;
+  border-radius: 1.5em;
+  color: white;
+  background-color: var(--cancel-btn-bg-clr);
+  max-width: 30%;
 }
 
 .library {

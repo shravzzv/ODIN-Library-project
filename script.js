@@ -99,3 +99,10 @@ const addBook = (e) => {
   formEl.style.display = 'block'
 }
 addBtnEl.addEventListener('click', addBook)
+
+const closeFormEl = document.querySelector('.cancel')
+const closeForm = (e) => {
+  formEl.reset()
+  formEl.style.display = 'none'
+}
+closeFormEl.addEventListener('click', closeForm)
