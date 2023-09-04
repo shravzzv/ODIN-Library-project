@@ -1,9 +1,16 @@
+// define global variables
+const heading = document.querySelector('h1')
 const formEl = document.querySelector('form')
+const addBtnEl = document.querySelector('.add')
 const libraryEl = document.querySelector('.library')
+const closeFormEl = document.querySelector('.cancel')
 const allBookEls = document.querySelectorAll('.book')
+const myLibrary = [
+  new Book('The Hobbit', 'J.R.R. Tolkien', 293, true),
+  new Book('Homo Deus', 'Yuval Noah Harari', 464, false),
+]
 
-const myLibrary = [new Book('The Hobbit', 'J.R.R. Tolkien', 293, false)]
-
+// Define the Book Constructor
 function Book(title, author, pages, isRead) {
   this.title = title
   this.author = author
@@ -11,20 +18,40 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead
 }
 
+// Define a method to get book info
 Book.prototype.info = function () {
   return `${title} by ${author}, ${pages} pages, ${
     isRead ? 'reading completed' : 'not read yet'
   }.`
 }
 
-const toggleRead = (e) => e.currentTarget.classList.toggle('read')
-
-const removeBook = (e, index) => {
-  e.stopPropagation()
-  myLibrary.splice(index, 1)
-  showLibrary()
+const hideFormEl = () => {
+  formEl.style.display = 'none'
+  libraryEl.style.filter = 'blur(0px)'
+  addBtnEl.style.filter = 'blur(0px)'
+  libraryEl.style['pointer-events'] = 'all'
 }
 
+const showFormEl = () => {
+  formEl.style.display = 'block'
+  libraryEl.style.filter = 'blur(15px)'
+  addBtnEl.style.filter = 'blur(15px)'
+  libraryEl.style['pointer-events'] = 'none'
+}
+
+// Update the library with the latest book
+const updateLibrary = () => {
+  const latestBook = myLibrary[myLibrary.length - 1]
+  createBookEl(latestBook)
+}
+
+// Clear and re-render the entire library
+const showLibrary = () => {
+  libraryEl.innerHTML = ''
+  myLibrary.forEach((book) => createBookEl(book))
+}
+
+// Create a DOM element for a book and append it to the library
 const createBookEl = (book) => {
   const bkEl = document.createElement('div')
   const bkTitleEl = document.createElement('p')
@@ -52,13 +79,16 @@ const createBookEl = (book) => {
   bkEl.appendChild(delBtn)
   libraryEl.appendChild(bkEl)
 
-  bkEl.addEventListener('click', toggleRead)
+  bkEl.addEventListener('click', handleToggleRead)
   delBtn.addEventListener('click', (e) =>
-    removeBook(e, parseInt(bkEl.getAttribute('data-index')))
+    handleRemoveBook(e, parseInt(bkEl.getAttribute('data-index')))
   )
 }
 
-formEl.addEventListener('submit', (e) => {
+// Event Handlers:
+
+// Handle form submission
+const handleSubmit = (e) => {
   e.preventDefault()
 
   const title = e.target.elements.title.value
@@ -71,44 +101,34 @@ formEl.addEventListener('submit', (e) => {
 
   e.target.reset()
   updateLibrary()
-  formEl.style.display = 'none'
-  libraryEl.style.filter = 'blur(0px)'
-  libraryEl.style['pointer-events'] = 'all'
-})
-
-Array.from(allBookEls).forEach((book) =>
-  book.addEventListener('click', toggleRead)
-)
-
-const updateLibrary = () => {
-  // Get the latest book added
-  const latestBook = myLibrary[myLibrary.length - 1]
-  // Create a DOM element for the latest book and append it to the library
-  createBookEl(latestBook)
+  hideFormEl()
 }
 
-function showLibrary() {
-  // Clear the library container first
-  libraryEl.innerHTML = ''
-  // Re-create book elements for the entire library
-  myLibrary.forEach((book) => createBookEl(book))
-}
-showLibrary()
+// Toggle the 'read' class when a book is clicked
+const handleToggleRead = (e) => e.currentTarget.classList.toggle('read')
 
-// add new book
-const addBtnEl = document.querySelector('.add')
-const addBook = (e) => {
-  formEl.style.display = 'block'
-  libraryEl.style.filter = 'blur(20px)'
-  libraryEl.style['pointer-events'] = 'none'
+// Remove a book from library when ❌ is clicked
+const handleRemoveBook = (e, index) => {
+  e.stopPropagation()
+  myLibrary.splice(index, 1)
+  showLibrary()
 }
-addBtnEl.addEventListener('click', addBook)
 
-const closeFormEl = document.querySelector('.cancel')
-const closeForm = (e) => {
+// Handle opening the form
+const handleOpenForm = (e) => showFormEl()
+
+// Handle closing the form
+const handleCloseForm = (e) => {
   formEl.reset()
-  formEl.style.display = 'none'
-  libraryEl.style.filter = 'blur(0px)'
-  libraryEl.style['pointer-events'] = 'all'
+  hideFormEl()
 }
-closeFormEl.addEventListener('click', closeForm)
+
+// Attach event listeners to elements
+Array.from(allBookEls).forEach((book) =>
+  book.addEventListener('click', handleToggleRead)
+)
+formEl.addEventListener('submit', handleSubmit)
+addBtnEl.addEventListener('click', handleOpenForm)
+closeFormEl.addEventListener('click', handleCloseForm)
+
+showLibrary()
