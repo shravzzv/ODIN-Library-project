@@ -7,7 +7,7 @@ const closeFormEl = document.querySelector('.cancel')
 const allBookEls = document.querySelectorAll('.book')
 const myLibrary = [
   new Book('The Hobbit', 'J.R.R. Tolkien', 293, true),
-  new Book('Homo Deus', 'Yuval Noah Harari', 464, false),
+  // new Book('Homo Deus', 'Yuval Noah Harari', 464, false),
 ]
 
 // Define the Book Constructor
