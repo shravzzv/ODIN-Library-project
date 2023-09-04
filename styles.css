@@ -21,6 +21,10 @@ body {
   padding: 2em;
 }
 
+form {
+  display: none;
+}
+
 /* form control resets */
 button,
 input,
@@ -151,6 +155,10 @@ button[type='submit'] {
 
   .add {
     margin: 1em;
+  }
+
+  .library {
+    margin: 2em;
   }
 }
 

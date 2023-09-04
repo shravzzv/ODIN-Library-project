@@ -71,6 +71,7 @@ formEl.addEventListener('submit', (e) => {
 
   e.target.reset()
   updateLibrary()
+  formEl.style.display = 'none'
 })
 
 Array.from(allBookEls).forEach((book) =>
@@ -91,3 +92,10 @@ function showLibrary() {
   myLibrary.forEach((book) => createBookEl(book))
 }
 showLibrary()
+
+// add new book
+const addBtnEl = document.querySelector('.add')
+const addBook = (e) => {
+  formEl.style.display = 'block'
+}
+addBtnEl.addEventListener('click', addBook)
