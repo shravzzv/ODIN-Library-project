@@ -10,6 +10,7 @@
   --input-bg-clr: white;
   --sbmt-btn-clr: white;
   --smbt-btn-bg-clr: #0969da;
+  --cancel-btn-bg-clr: red;
 }
 
 body {
@@ -19,6 +20,15 @@ body {
   color: var(--txt-clr);
   background-color: var(--bg-clr);
   padding: 2em;
+}
+
+form {
+  display: none;
+  position: absolute;
+  top: calc((100vh - 340px) / 2);
+  left: max(15px, calc((100vw - 340px) / 2));
+  max-width: 90vw;
+  z-index: 1;
 }
 
 /* form control resets */
@@ -70,6 +80,7 @@ input {
 input[type='checkbox'] {
   width: max-content;
   margin-left: 0.5em;
+  cursor: pointer;
 }
 
 input:focus {
@@ -80,21 +91,35 @@ button[type='submit'] {
   font-size: 1rem;
   cursor: pointer;
   border: none;
-  padding: 0.5em 1em;
-  border-radius: 1em;
-  color: var(--sbmt-btn-clr);
+  padding: 0.5em 0.25em;
+  border-radius: 1.5em;
+  color: white;
   background-color: var(--smbt-btn-bg-clr);
+  max-width: 40%;
 }
+
+.cancel {
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  padding: 0.5em;
+  border-radius: 1.5em;
+  color: white;
+  background-color: var(--cancel-btn-bg-clr);
+  max-width: 30%;
+}
+
+/* library */
 
 .library {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1em;
 }
 
 .book {
   border-radius: 0.5em;
-  border-left: 5px solid black;
+  border-left: 10px solid black;
   padding: 0.5em;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -107,10 +132,11 @@ button[type='submit'] {
 
 .title {
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .author {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .pages::before {
@@ -129,9 +155,34 @@ button[type='submit'] {
   border-radius: 1em;
 }
 
+/* add books button */
+
+.add {
+  border-radius: 1em;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  margin: 0 auto 1.5em;
+  color: var(--txt-clr);
+  background-color: var(--input-bg-clr);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
 @media screen and (min-width: 768px) {
   fieldset {
     width: max-content;
+  }
+  h1,
+  .add {
+    display: inline-block;
+  }
+
+  .add {
+    margin: 1em;
+  }
+
+  .library {
+    margin: 2em;
   }
 }
 
