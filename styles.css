@@ -109,9 +109,11 @@ button[type='submit'] {
   max-width: 30%;
 }
 
+/* library */
+
 .library {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1em;
 }
 
@@ -130,10 +132,11 @@ button[type='submit'] {
 
 .title {
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .author {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .pages::before {
@@ -151,6 +154,8 @@ button[type='submit'] {
   background-color: red;
   border-radius: 1em;
 }
+
+/* add books button */
 
 .add {
   border-radius: 1em;
