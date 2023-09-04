@@ -79,6 +79,7 @@ input {
 input[type='checkbox'] {
   width: max-content;
   margin-left: 0.5em;
+  cursor: pointer;
 }
 
 input:focus {
@@ -115,7 +116,7 @@ button[type='submit'] {
 
 .book {
   border-radius: 0.5em;
-  border-left: 5px solid black;
+  border-left: 10px solid black;
   padding: 0.5em;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
