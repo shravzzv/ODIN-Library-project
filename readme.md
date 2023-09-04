@@ -2,7 +2,8 @@
 
 This project demonstrates my skills in implementing the **Objects and Object Constructors design pattern** using JavaScript. It's part of [The Odin Project][project-url] and was completed as a segment of their [JavaScript course][course-url].
 
-![dashboard][pic-url]
+![Library][pic-url-1]
+![Form][pic-url-2]
 
 [View Demo][deployment-url]
 
@@ -42,7 +43,8 @@ The project is licensed under the [MIT license][Licence-url].
 
 <!-- links -->
 
-[pic-url]: https://res.cloudinary.com/dmt9s5xlh/image/upload/v1693560636/odin-library1_ycaycp.jpg
+[pic-url-1]: https://res.cloudinary.com/dmt9s5xlh/image/upload/v1693814960/INBOX/ODIN-lib-home_y6oxtk.jpg
+[pic-url-2]: https://res.cloudinary.com/dmt9s5xlh/image/upload/v1693814960/INBOX/ODIN-lib-form_p7u4z9.jpg
 [project-url]: https://www.theodinproject.com/lessons/node-path-javascript-library
 [course-url]: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript
 [deployment-url]: https://shravzzv.github.io/ODIN-Library-project/
