@@ -23,6 +23,10 @@ body {
 
 form {
   display: none;
+  position: absolute;
+  top: calc((100vh - 340px) / 2);
+  left: max(15px, calc((100vw - 320px) / 2));
+  max-width: 90vw;
 }
 
 /* form control resets */
