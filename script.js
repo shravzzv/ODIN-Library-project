@@ -72,6 +72,8 @@ formEl.addEventListener('submit', (e) => {
   e.target.reset()
   updateLibrary()
   formEl.style.display = 'none'
+  libraryEl.style.filter = 'blur(0px)'
+  libraryEl.style['pointer-events'] = 'all'
 })
 
 Array.from(allBookEls).forEach((book) =>
@@ -97,6 +99,8 @@ showLibrary()
 const addBtnEl = document.querySelector('.add')
 const addBook = (e) => {
   formEl.style.display = 'block'
+  libraryEl.style.filter = 'blur(20px)'
+  libraryEl.style['pointer-events'] = 'none'
 }
 addBtnEl.addEventListener('click', addBook)
 
@@ -104,5 +108,7 @@ const closeFormEl = document.querySelector('.cancel')
 const closeForm = (e) => {
   formEl.reset()
   formEl.style.display = 'none'
+  libraryEl.style.filter = 'blur(0px)'
+  libraryEl.style['pointer-events'] = 'all'
 }
 closeFormEl.addEventListener('click', closeForm)
