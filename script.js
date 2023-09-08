@@ -5,25 +5,24 @@ const addBtnEl = document.querySelector('.add')
 const libraryEl = document.querySelector('.library')
 const closeFormEl = document.querySelector('.cancel')
 const allBookEls = document.querySelectorAll('.book')
-const myLibrary = [
-  new Book('The Hobbit', 'J.R.R. Tolkien', 293, true),
-  // new Book('Homo Deus', 'Yuval Noah Harari', 464, false),
-]
 
-// Define the Book Constructor
-function Book(title, author, pages, isRead) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.isRead = isRead
+// Define the Book Class
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.isRead = isRead
+  }
+
+  info() {
+    return `${title} by ${author}, ${pages} pages, ${
+      isRead ? 'reading completed' : 'not read yet'
+    }.`
+  }
 }
 
-// Define a method to get book info
-Book.prototype.info = function () {
-  return `${title} by ${author}, ${pages} pages, ${
-    isRead ? 'reading completed' : 'not read yet'
-  }.`
-}
+const myLibrary = [new Book('The Hobbit', 'J.R.R. Tolkien', 293, true)]
 
 const hideFormEl = () => {
   formEl.style.display = 'none'
